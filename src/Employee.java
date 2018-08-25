@@ -2,13 +2,20 @@ public abstract class Employee {
     private String name;
     private String type;
     private String address;
+    private String paymentMethod;
     private int employeeid;
+    Syndicate syndicate;
+    private int syndicateid;
+    private double syndicatetax;
 
-    public Employee(String name, String address, String type, int employeeid)
+    public Employee(Syndicate syndicate,String name, String address, String type, String paymentMethod, int employeeid)
     {
+        this.syndicateid = syndicate.getSyndicateid();
+        this.syndicatetax = syndicate.getSyndicatetax();
         this.name = name;
         this.type = type;
         this.address = address;
+        this.paymentMethod = paymentMethod;
         this.employeeid = employeeid;
     }
 
