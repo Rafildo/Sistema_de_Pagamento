@@ -1,4 +1,4 @@
-public abstract class Comissioned_Employee extends Employee {
+public class Comissioned_Employee extends Employee {
 
     private double salary;
 

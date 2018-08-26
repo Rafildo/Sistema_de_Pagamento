@@ -1,5 +1,5 @@
 
-public abstract class Hourly_Employee extends Employee {
+public class Hourly_Employee extends Employee {
 
     private double salary;
 

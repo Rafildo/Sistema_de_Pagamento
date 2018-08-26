@@ -1,4 +1,4 @@
-public abstract class Salaried_Employee extends Employee {
+public class Salaried_Employee extends Employee {
 
     private double salary;
 

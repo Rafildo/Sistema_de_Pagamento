@@ -1,4 +1,4 @@
-public abstract class Employee {
+public class Employee {
     private String name;
     private String type;
     private String address;
@@ -10,8 +10,8 @@ public abstract class Employee {
 
     public Employee(Syndicate syndicate,String name, String address, String type, String paymentMethod, int employeeid)
     {
-        this.syndicateid = syndicate.getSyndicateid();
-        this.syndicatetax = syndicate.getSyndicatetax();
+//        this.syndicateid = syndicate.getSyndicateid();
+        //this.syndicatetax = syndicate.getSyndicatetax();
         this.name = name;
         this.type = type;
         this.address = address;
@@ -51,7 +51,43 @@ public abstract class Employee {
         this.employeeid = employeeid;
     }
 
-    public abstract double calculateSalary();
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
 
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
+    public Syndicate getSyndicate() {
+        return syndicate;
+    }
+
+    public void setSyndicate(Syndicate syndicate) {
+        this.syndicate = syndicate;
+    }
+
+    public int getSyndicateid() {
+        return syndicateid;
+    }
+
+    public void setSyndicateid(int syndicateid) {
+        this.syndicateid = syndicateid;
+    }
+
+    public double getSyndicatetax() {
+        return syndicatetax;
+    }
+
+    public void setSyndicatetax(double syndicatetax) {
+        this.syndicatetax = syndicatetax;
+    }
+
+    public String toString()
+    {
+        return(this.getName() + System.lineSeparator()+ this.getType() + System.lineSeparator() + this.getAddress()
+            + System.lineSeparator() + this.getType() + System.lineSeparator() + this.getPaymentMethod() +
+            System.lineSeparator() + this.getEmployeeid() + System.lineSeparator());
+
+    }
 }
