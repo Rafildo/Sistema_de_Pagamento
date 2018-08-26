@@ -4,6 +4,7 @@ public class Sales_Result {
     private int id;
     private double price;
     private String date;
+    private String name;
 
     public int getId() {
         return id;
@@ -39,6 +40,8 @@ public class Sales_Result {
     public void submitSalesResult()
     {
         Scanner input = new Scanner(System.in);
+        System.out.println("Nome:");
+        name = input.nextLine();
         System.out.println("Valor da venda:");
         setPrice(input.nextDouble());
         System.out.println("Data:");

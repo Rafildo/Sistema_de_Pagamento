@@ -3,5 +3,6 @@ public class Main {
     {
         Menu_Geral menu = new Menu_Geral();
         menu.newEmployee();
+        menu.printEmployee();
     }
 }

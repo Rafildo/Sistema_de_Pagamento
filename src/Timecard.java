@@ -11,6 +11,14 @@ public class Timecard {
         this.dailyhours = dailyhours;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getDailyhours() {
         return dailyhours;
     }
@@ -19,10 +27,4 @@ public class Timecard {
         this.dailyhours = dailyhours;
     }
 
-    public void submitWorkedHours()
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Horas trabalhadas");
-        setDailyhours(input.nextInt());
-    }
 }

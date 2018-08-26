@@ -3,12 +3,13 @@ public class Employee {
     private String type;
     private String address;
     private String paymentMethod;
+    private double salary;
     private int employeeid;
     Syndicate syndicate;
     private int syndicateid;
     private double syndicatetax;
 
-    public Employee(Syndicate syndicate,String name, String address, String type, String paymentMethod, int employeeid)
+    public Employee(Syndicate syndicate,String name, String address, String type, String paymentMethod, double salary, int employeeid)
     {
 //        this.syndicateid = syndicate.getSyndicateid();
         //this.syndicatetax = syndicate.getSyndicatetax();
@@ -17,6 +18,7 @@ public class Employee {
         this.address = address;
         this.paymentMethod = paymentMethod;
         this.employeeid = employeeid;
+        this.salary = salary;
     }
 
     public String getName() {
@@ -57,6 +59,14 @@ public class Employee {
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public Syndicate getSyndicate() {
