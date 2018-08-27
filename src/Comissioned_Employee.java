@@ -1,12 +1,22 @@
 public class Comissioned_Employee extends Employee {
 
     private double comission;
+    private double accumulatedsalary;
 
     public Comissioned_Employee(Syndicate syndicate,String name, String address, String type,
-                                String paymentMethod, double salary, int employeeid, double comission)
+                                String paymentMethod, double salary,double accumulatedsalary, int employeeid, double comission)
     {
         super(syndicate,name,address,type,paymentMethod,salary,employeeid);
         this.comission = comission;
+        this.accumulatedsalary = accumulatedsalary;
+    }
+
+    public double getAccumulatedsalary() {
+        return accumulatedsalary;
+    }
+
+    public void setAccumulatedsalary(double accumulatedsalary) {
+        this.accumulatedsalary += accumulatedsalary;
     }
 
     public double getComission() {
@@ -17,9 +27,10 @@ public class Comissioned_Employee extends Employee {
         this.comission = comission;
     }
 
-    double calculateSalary(double salary)
+    public String toString()
     {
-        return salary;
+        return (this.getName() + System.lineSeparator() + this.getAccumulatedsalary() +
+                System.lineSeparator() + this.getComission() + "%");
     }
 
 }

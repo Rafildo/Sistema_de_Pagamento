@@ -53,12 +53,19 @@ public class Employee_Controller {
                         employeeset.getPaymentMethod(),returnMonthlySalary(), employeeset.getEmployeeid()));
                 break;
             case 3:
+                Comissioned_Employee comissionedemployeeset = new Comissioned_Employee(null,null,
+                        null,null,null,0.0,0.0,-3,0.0);
+                System.out.println("Salário fixo");
+                employeeset.setSalary(input.nextDouble());
+                System.out.println("Comissão");
+                comissionedemployeeset.setComission(input.nextDouble());
+
                 employee.add(new Comissioned_Employee(null,employeeset.getName(),employeeset.getAddress(),
-                        "Comissionado", employeeset.getPaymentMethod(),returnFixedSalary(),
-                        employeeset.getEmployeeid(),returnComission()));
+                        "Comissionado", employeeset.getPaymentMethod(),employeeset.getSalary(),0,
+                        employeeset.getEmployeeid(),comissionedemployeeset.getComission()));
                 comissioned_employee.add(new Comissioned_Employee(null,employeeset.getName(),employeeset.getAddress(),
-                        "Comissionado", employeeset.getPaymentMethod(),returnFixedSalary(),
-                        employeeset.getEmployeeid(),returnComission()));
+                        "Comissionado", employeeset.getPaymentMethod(),employeeset.getSalary(),0,
+                        employeeset.getEmployeeid(),comissionedemployeeset.getComission()));
                 break;
 
         }
@@ -84,7 +91,7 @@ public class Employee_Controller {
     public double returnComission()
     {
         Comissioned_Employee comissioned_employee = new Comissioned_Employee(null,null,null,
-                null,null,0.0,0,0.0);
+                null,null,0,0.0,0,0.0);
         Scanner input = new Scanner(System.in);
         System.out.println("Comissão sobre o valor das vendas (em %)");
         comissioned_employee.setComission(input.nextDouble());

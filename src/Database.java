@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Database {
     Employee_Controller employee_controller = new Employee_Controller();
     Timecard_Controller timecard_controller = new Timecard_Controller();
+    Sales_Result sales_result = new Sales_Result();
     private ArrayList<Employee> employeeArrayList;
     private ArrayList<Hourly_Employee> hourly_employeeArrayList;
     private ArrayList<Comissioned_Employee> comissioned_employeeArrayList;
@@ -28,5 +29,7 @@ public class Database {
     {
         this.employeeArrayList = new ArrayList<>();
         this.hourly_employeeArrayList = new ArrayList<>();
+        this.comissioned_employeeArrayList = new ArrayList<>();
+        this.salaried_employeeArrayList = new ArrayList<>();
     }
 }

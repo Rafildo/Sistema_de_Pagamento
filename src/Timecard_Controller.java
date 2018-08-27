@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Timecard_Controller {
-    private ArrayList<Hourly_Employee> hourly_employees = new ArrayList<>();
     private String name;
 
     public void hourlyEmployeecontribution(ArrayList<Hourly_Employee> hourly_employees)
@@ -40,7 +39,7 @@ public class Timecard_Controller {
             return(calculateExtraHoursSalary(hours,hourly_employee) + calculateNormalHoursSalary(8,hourly_employee));
         }
     }
-    
+
 
     public double calculateNormalHoursSalary(int hours, Hourly_Employee hourly_employee)
     {

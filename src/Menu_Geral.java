@@ -15,8 +15,13 @@ public class Menu_Geral {
         database.timecard_controller.hourlyEmployeecontribution(database.getHourly_employeeArrayList());
     }
 
+    public void newSaleResult()
+    {
+        database.sales_result.submitSalesResult(database.getComissioned_employeeArrayList());
+    }
+
     public void printEmployee()
     {
-        System.out.println(database.getHourly_employeeArrayList());
+        System.out.println(database.getComissioned_employeeArrayList());
     }
 }
