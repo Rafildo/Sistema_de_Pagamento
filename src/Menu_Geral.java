@@ -10,7 +10,7 @@ public class Menu_Geral {
               database.getSalaried_employeeArrayList());
     }
 
-    public void newHourlyEmployeeContribution()
+    public void newHourlyEmployeeTimecard()
     {
         database.timecard_controller.hourlyEmployeecontribution(database.getHourly_employeeArrayList());
     }

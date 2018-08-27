@@ -36,10 +36,15 @@ public class Employee_Controller {
         switch (choice)
         {
             case 1:
+                System.out.println("Salário por hora");
+                employeeset.setSalary(input.nextDouble());
+                input.nextLine();
                 employee.add(new Hourly_Employee(null,employeeset.getName(),employeeset.getAddress(),"Horista",
-                        employeeset.getPaymentMethod(),returnHourlySalary(),0, employeeset.getEmployeeid()));
+                        employeeset.getPaymentMethod(),employeeset.getSalary(),0,0 ,
+                        employeeset.getEmployeeid()));
                 hourly_employee.add(new Hourly_Employee(null,employeeset.getName(),employeeset.getAddress(),"Horista",
-                        employeeset.getPaymentMethod(),returnHourlySalary(),0, employeeset.getEmployeeid()));
+                        employeeset.getPaymentMethod(),employeeset.getSalary(),0,0,
+                        employeeset.getEmployeeid()));
                 break;
             case 2:
                 employee.add(new Salaried_Employee(null,employeeset.getName(),employeeset.getAddress(),"Assalariado",
@@ -59,13 +64,6 @@ public class Employee_Controller {
         }
     }
 
-    public double returnHourlySalary()
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Salário por hora");
-        employeeset.setSalary(input.nextDouble());
-        return employeeset.getSalary();
-    }
 
     public double returnMonthlySalary()
     {

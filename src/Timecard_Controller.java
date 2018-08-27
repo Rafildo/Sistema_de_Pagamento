@@ -22,13 +22,35 @@ public class Timecard_Controller {
 
         }
         else {
-           // returnEmployeeid(temp);
             System.out.println("Horas trabalhadas");
             temp.setWorkedhours(input.nextInt());
+            temp.setAccumulatedsalary(calculateSalary(temp.getWorkedhours(),temp));
 
         }
     }
 
+    public double calculateSalary(int hours,Hourly_Employee hourly_employee)
+    {
+        if (hours <= 8)
+        {
+           return calculateNormalHoursSalary(hours,hourly_employee);
+        }
+        else
+        {
+            return(calculateExtraHoursSalary(hours,hourly_employee) + calculateNormalHoursSalary(8,hourly_employee));
+        }
+    }
+    
+
+    public double calculateNormalHoursSalary(int hours, Hourly_Employee hourly_employee)
+    {
+        return hours*(hourly_employee.getSalary());
+    }
+
+    public double calculateExtraHoursSalary(int hours, Hourly_Employee hourly_employee)
+    {
+        return (hours%8)*(hourly_employee.getSalary()*1.5);
+    }
     public Hourly_Employee findEmployee(ArrayList<Hourly_Employee> hourly_employees)
     {
         for (int i = 0; i < hourly_employees.size(); i++)
