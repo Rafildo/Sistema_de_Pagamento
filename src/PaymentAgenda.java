@@ -1,11 +1,21 @@
 public class PaymentAgenda {
     private String type;
     private int interval;
+    private String day;
 
-    public PaymentAgenda(String type,int interval)
+    public PaymentAgenda(String type,int interval,String day)
     {
         this.type = type;
         this.interval = interval;
+        this.day = day;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public String getType() {

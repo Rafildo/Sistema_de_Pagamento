@@ -3,10 +3,10 @@ public class Comissioned_Employee extends Employee {
     private double comission;
     private double accumulatedsalary;
 
-    public Comissioned_Employee(Syndicate syndicate,String name, String address, String type,
+    public Comissioned_Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address, String type,
                                 String paymentMethod, double salary,double accumulatedsalary, int employeeid, double comission)
     {
-        super(syndicate,name,address,type,paymentMethod,salary,employeeid);
+        super(syndicate,paymentAgenda,name,address,type,paymentMethod,salary,employeeid);
         this.comission = comission;
         this.accumulatedsalary = accumulatedsalary;
     }

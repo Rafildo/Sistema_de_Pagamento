@@ -19,7 +19,7 @@ public class Syndicate {
         this.syndicateid = syndicateid;
     }
 
-    public Syndicate(Employee employee, int syndicateid, double syndicatetax)
+    public Syndicate(int syndicateid, double syndicatetax)
     {
         this.syndicateid = syndicateid;
         this.syndicatetax = syndicatetax;

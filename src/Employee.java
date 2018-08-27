@@ -5,14 +5,16 @@ public class Employee {
     private String paymentMethod;
     private double salary;
     private int employeeid;
-    Syndicate syndicate;
     private int syndicateid;
     private double syndicatetax;
+    PaymentAgenda paymentAgenda;
+    Syndicate syndicate;
 
-    public Employee(Syndicate syndicate,String name, String address, String type, String paymentMethod, double salary, int employeeid)
+    public Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address, String type, String paymentMethod, double salary, int employeeid)
     {
 //        this.syndicateid = syndicate.getSyndicateid();
         //this.syndicatetax = syndicate.getSyndicatetax();
+        this.paymentAgenda = new PaymentAgenda(null,0,null);
         this.name = name;
         this.type = type;
         this.address = address;
