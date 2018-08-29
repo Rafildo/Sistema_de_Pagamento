@@ -1,9 +1,9 @@
+import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class PaymentAgenda_Controller {
-    PaymentAgenda paymentAgenda = new PaymentAgenda(null,0);
-    private String type;
-    private int interval;
+    PaymentAgenda paymentAgenda = new PaymentAgenda(null,0,null);
 
     public void getAgendaType()
     {
@@ -27,5 +27,15 @@ public class PaymentAgenda_Controller {
     {
         System.out.println("1: Mensal");
         System.out.println("2: Semanal");
+    }
+
+    public Date paymentDate(PaymentAgenda paymentAgenda)
+    {
+        Calendar cal = Calendar.getInstance();
+        if (paymentAgenda.getType().equals("Mensal"))
+        {
+            paymentAgenda.setDuedatemonth(cal.roll(Calendar.MONTH,true));
+        }
+
     }
 }
