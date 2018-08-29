@@ -18,21 +18,133 @@ public class Employee_Controller {
         employeeset.setPaymentMethod(selectPaymentMethod());
         System.out.println("Pertence ao sindicato?");
         syndicateCheck();
+        employeeset.setEmployeeid(generator.nextInt(10000));
         System.out.println("Tipo:");
         displayTypeSelection();
         typeSelection(employee,hourly_employee,comissioned_employee,salaried_employee);
-        employeeset.setEmployeeid(generator.nextInt(10000));
     }
 
-    public void removeEmployee(ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
+    public void EmployeeToBeRemoved (ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
                                ArrayList<Comissioned_Employee> comissioned_employee,
                                ArrayList<Salaried_Employee>salaried_employee)
     {
         Scanner input = new Scanner(System.in);
         displayTypeSelection();
+        int choice = input.nextInt();
+        System.out.println("Nome do funcionário a ser removido:");
         String name = input.nextLine();
+        removeEmployee(employee,name);
+        switch (choice)
+        {
+            case 1:
+                removeHourlyEmployee(hourly_employee,name);
+                break;
+
+            case 2:
+                removeSalariedEmployee(salaried_employee,name);
+                break;
+
+            case 3:
+                removeComissionedEmployee(comissioned_employee,name);
+                break;
+        }
         
     }
+
+    public void removeEmployee(ArrayList<Employee> employee,String name)
+    {
+        for (int i = 0 ; i < employee.size(); i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employee.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeHourlyEmployee(ArrayList<Hourly_Employee> employee,String name)
+    {
+        for (int i = 0 ; i < employee.size(); i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employee.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeComissionedEmployee(ArrayList<Comissioned_Employee> employee,String name)
+    {
+        for (int i = 0 ; i < employee.size(); i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employee.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeSalariedEmployee(ArrayList<Salaried_Employee> employee,String name)
+    {
+        for (int i = 0 ; i < employee.size(); i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employee.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void editEmployee(ArrayList<Employee> employee,
+                             ArrayList<Hourly_Employee> hourly_employee,
+                             ArrayList<Comissioned_Employee> comissioned_employee,
+                             ArrayList<Salaried_Employee> salaried_employee)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nome do funcionário a editar");
+        String name = input.nextLine();
+        System.out.println("Tipo do funcionário");
+        displayTypeSelection();
+        int choice = input.nextInt();
+        switch (choice)
+        {
+            case 1:
+                removeHourlyEmployee(hourly_employee,name);
+                break;
+            case 2:
+                removeComissionedEmployee(comissioned_employee,name);
+                break;
+
+            case 3:
+                removeSalariedEmployee(salaried_employee,name);
+                break;
+        }
+
+        for (int i = 0; i < employee.size() ; i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employeeset.setEmployeeid(employee.get(i).getEmployeeid());
+            }
+        }
+        removeEmployee(employee,name);
+        System.out.println("Nome:");
+        employeeset.setName(input.nextLine());
+        System.out.println("Endereço:");
+        employeeset.setAddress(input.nextLine());
+        System.out.println("Forma de pagamento:");
+        employeeset.setPaymentMethod(selectPaymentMethod());
+        System.out.println("Pertence ao sindicato?");
+        syndicateCheck();
+        System.out.println("Tipo:");
+        displayTypeSelection();
+        typeSelection(employee,hourly_employee,comissioned_employee,salaried_employee);
+    }
+
 
     public String selectPaymentMethod()
     {
