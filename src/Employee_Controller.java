@@ -28,7 +28,10 @@ public class Employee_Controller {
                                ArrayList<Comissioned_Employee> comissioned_employee,
                                ArrayList<Salaried_Employee>salaried_employee)
     {
+        Scanner input = new Scanner(System.in);
         displayTypeSelection();
+        String name = input.nextLine();
+        
     }
 
     public String selectPaymentMethod()
