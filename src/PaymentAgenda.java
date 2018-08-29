@@ -5,9 +5,10 @@ public class PaymentAgenda {
     Calendar cal = Calendar.getInstance();
     private String type;
     private int interval;
-    private String day;
+    private String weekday;
     private int dateday;
     private int datemonth;
+    private int dueweekday;
     private int duedateday;
     private  int duedatemonth;
 
@@ -15,7 +16,7 @@ public class PaymentAgenda {
     {
         this.type = type;
         this.interval = interval;
-        this.day = day;
+        this.weekday = day;
         this.dateday = cal.get(Calendar.DAY_OF_MONTH);
         this.datemonth = cal.get(Calendar.MONTH);
     }
@@ -52,12 +53,21 @@ public class PaymentAgenda {
         this.duedatemonth = duedatemonth;
     }
 
-    public String getDay() {
-        return day;
+
+    public void setWeekday(String weekday) {
+        this.weekday = weekday;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public String getWeekday() {
+        return weekday;
+    }
+
+    public int getDueweekday() {
+        return dueweekday;
+    }
+
+    public void setDueweekday(int dueweekday) {
+        this.dueweekday = dueweekday;
     }
 
     public String getType() {

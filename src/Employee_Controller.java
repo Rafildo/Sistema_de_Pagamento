@@ -3,10 +3,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Employee_Controller {
-    Employee employeeset = new Employee(null,null,null,null,null,null,-1,-2);
+    Employee employeeset = new Employee(null,null,null,null,null,null,-1,-2,0);
 
     public void addEmployee(ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
-                            ArrayList<Comissioned_Employee> comissioned_employee,ArrayList<Salaried_Employee> salaried_employee)
+                            ArrayList<Comissioned_Employee> comissioned_employee,
+                            ArrayList<Salaried_Employee> salaried_employee)
     {
         Scanner input = new Scanner(System.in);
         Random generator = new Random();
@@ -197,8 +198,6 @@ public class Employee_Controller {
         int syndicateid = generator.nextInt(10000);
         return new Syndicate(syndicateid,syndicatetax);
 
-
-
     }
 
     public void typeSelection(ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
@@ -216,11 +215,11 @@ public class Employee_Controller {
                 employee.add(new Hourly_Employee(null,new PaymentAgenda("semanal",1,"sexta"),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0 ,
-                        employeeset.getEmployeeid()));
+                        employeeset.getEmployeeid(),0));
                 hourly_employee.add(new Hourly_Employee(null,new PaymentAgenda("semanal",1,"sexta"),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0,
-                        employeeset.getEmployeeid()));
+                        employeeset.getEmployeeid(),0));
                 break;
 
             case 2:
@@ -229,15 +228,15 @@ public class Employee_Controller {
                 input.nextLine();
                 employee.add(new Salaried_Employee(null,new PaymentAgenda("mensal",30,null),
                         employeeset.getName(),employeeset.getAddress(),"Assalariado",
-                        employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid()));
+                        employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid(),0));
                 salaried_employee.add(new Salaried_Employee(null,new PaymentAgenda("mensal",30,null),
                         employeeset.getName(),employeeset.getAddress(),"Assalariado",
-                        employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid()));
+                        employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid(),0));
                 break;
 
             case 3:
                 Comissioned_Employee comissionedemployeeset = new Comissioned_Employee(null,null,null,
-                        null,null,null,0.0,0.0,-3,0.0);
+                        null,null,null,0.0,0.0,-3,0.0,0);
                 System.out.println("Salário fixo");
                 employeeset.setSalary(input.nextDouble());
                 System.out.println("Comissão");
@@ -245,16 +244,15 @@ public class Employee_Controller {
                 employee.add(new Comissioned_Employee(null,new PaymentAgenda("semanal",2,"sexta"),
                         employeeset.getName(),employeeset.getAddress(), "Comissionado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,
-                        employeeset.getEmployeeid(),comissionedemployeeset.getComission()));
+                        employeeset.getEmployeeid(),comissionedemployeeset.getComission(),0));
                 comissioned_employee.add(new Comissioned_Employee(null,new PaymentAgenda("semanal",2,"sexta"),
                         employeeset.getName(),employeeset.getAddress(), "Comissionado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,
-                        employeeset.getEmployeeid(),comissionedemployeeset.getComission()));
+                        employeeset.getEmployeeid(),comissionedemployeeset.getComission(),0));
                 break;
 
         }
     }
-
 
 
     public void displayTypeSelection()

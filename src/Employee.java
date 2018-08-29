@@ -5,12 +5,12 @@ public class Employee {
     private String paymentMethod;
     private double salary;
     private int employeeid;
-    private int syndicateid;
-    private double syndicatetax;
     PaymentAgenda paymentAgenda;
     Syndicate syndicate;
+    private double salarydeductions;
 
-    public Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address, String type, String paymentMethod, double salary, int employeeid)
+    public Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address,
+                    String type, String paymentMethod, double salary, int employeeid, double salarydeductions)
     {
         this.syndicate = syndicate;
         this.paymentAgenda = new PaymentAgenda(null,0,null);
@@ -20,6 +20,7 @@ public class Employee {
         this.paymentMethod = paymentMethod;
         this.employeeid = employeeid;
         this.salary = salary;
+        this.salarydeductions = salarydeductions;
     }
 
     public String getName() {
@@ -78,20 +79,12 @@ public class Employee {
         this.syndicate = syndicate;
     }
 
-    public int getSyndicateid() {
-        return syndicateid;
+    public double getSalarydeductions() {
+        return salarydeductions;
     }
 
-    public void setSyndicateid(int syndicateid) {
-        this.syndicateid = syndicateid;
-    }
-
-    public double getSyndicatetax() {
-        return syndicatetax;
-    }
-
-    public void setSyndicatetax(double syndicatetax) {
-        this.syndicatetax = syndicatetax;
+    public void setSalarydeductions(double salarydeductions) {
+        this.salarydeductions += salarydeductions;
     }
 
     public String toString()
