@@ -5,7 +5,7 @@ import java.util.Random;
 public class Employee_Controller {
     Employee employeeset = new Employee(null,null,null,null,null,null,-1,-2,0);
 
-    public void addEmployee(ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
+    public void addEmployee(Database database,ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
                             ArrayList<Comissioned_Employee> comissioned_employee,
                             ArrayList<Salaried_Employee> salaried_employee)
     {
@@ -22,7 +22,7 @@ public class Employee_Controller {
         employeeset.setEmployeeid(generator.nextInt(10000));
         System.out.println("Tipo:");
         displayTypeSelection();
-        typeSelection(employee,hourly_employee,comissioned_employee,salaried_employee);
+        typeSelection(database,employee,hourly_employee,comissioned_employee,salaried_employee);
     }
 
     public void EmployeeToBeRemoved (ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
@@ -30,11 +30,11 @@ public class Employee_Controller {
                                ArrayList<Salaried_Employee>salaried_employee)
     {
         Scanner input = new Scanner(System.in);
-        displayTypeSelection();
-        int choice = input.nextInt();
         System.out.println("Nome do funcionário a ser removido:");
         String name = input.nextLine();
+        displayTypeSelection();
         removeEmployee(employee,name);
+        int choice = input.nextInt();
         switch (choice)
         {
             case 1:
@@ -100,7 +100,7 @@ public class Employee_Controller {
         }
     }
 
-    public void editEmployee(ArrayList<Employee> employee,
+    public void editEmployee(Database database,ArrayList<Employee> employee,
                              ArrayList<Hourly_Employee> hourly_employee,
                              ArrayList<Comissioned_Employee> comissioned_employee,
                              ArrayList<Salaried_Employee> salaried_employee)
@@ -143,17 +143,17 @@ public class Employee_Controller {
         syndicateCheck();
         System.out.println("Tipo:");
         displayTypeSelection();
-        typeSelection(employee,hourly_employee,comissioned_employee,salaried_employee);
+        typeSelection(database,employee,hourly_employee,comissioned_employee,salaried_employee);
     }
 
 
     public String selectPaymentMethod()
     {
         Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();
         System.out.println("1: Cheque pelos correios");
         System.out.println("2: Cheque em mãos");
         System.out.println("3: Depósito em conta bancária");
+        int choice = input.nextInt();
         switch(choice)
         {
             case 1:
@@ -200,7 +200,7 @@ public class Employee_Controller {
 
     }
 
-    public void typeSelection(ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
+    public void typeSelection(Database database,ArrayList<Employee> employee,ArrayList<Hourly_Employee> hourly_employee,
                               ArrayList<Comissioned_Employee> comissioned_employee,
                               ArrayList<Salaried_Employee> salaried_employee)
     {
@@ -213,12 +213,12 @@ public class Employee_Controller {
                 System.out.println("Salário por hora");
                 employeeset.setSalary(input.nextDouble());
                 input.nextLine();
-                employee.add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
+                database.getEmployeeArrayList().add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
                         new PaymentAgenda("semanal",1,"sexta"),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0 ,
                         employeeset.getEmployeeid(),0));
-                hourly_employee.add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
+                database.getHourly_employeeArrayList().add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
                         new PaymentAgenda("semanal",1,"sexta"),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0,

@@ -35,4 +35,5 @@ public class Database {
         this.comissioned_employeeArrayList = new ArrayList<>();
         this.salaried_employeeArrayList = new ArrayList<>();
     }
+
 }
