@@ -56,7 +56,6 @@ public class Menu_Employee
                 database.getHourly_employeeArrayList(),
                 database.getComissioned_employeeArrayList(),
                 database.getSalaried_employeeArrayList());
-        printEmployee(database);
     }
 
     public void removeEmployee(Database database)
