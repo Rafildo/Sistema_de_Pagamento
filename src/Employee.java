@@ -12,7 +12,7 @@ public class Employee {
     public Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address,
                     String type, String paymentMethod, double salary, int employeeid, double salarydeductions)
     {
-        this.syndicate = syndicate;
+        this.syndicate = new Syndicate(0,0);
         this.paymentAgenda = new PaymentAgenda(null,0,null);
         this.name = name;
         this.type = type;
@@ -21,6 +21,14 @@ public class Employee {
         this.employeeid = employeeid;
         this.salary = salary;
         this.salarydeductions = salarydeductions;
+    }
+
+    public PaymentAgenda getPaymentAgenda() {
+        return paymentAgenda;
+    }
+
+    public void setPaymentAgenda(PaymentAgenda paymentAgenda) {
+        this.paymentAgenda = paymentAgenda;
     }
 
     public String getName() {

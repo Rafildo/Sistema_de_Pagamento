@@ -1,9 +1,59 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.Calendar;
 
 public class PaymentAgenda_Controller {
     PaymentAgenda paymentAgenda = new PaymentAgenda(null,0,null);
+
+    public void employeeAgenda(ArrayList<Employee> employee, ArrayList<Hourly_Employee> hourly_employee,
+                               ArrayList<Comissioned_Employee> comissioned_employee,
+                               ArrayList<Salaried_Employee> salaried_employee)
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nome do funcionário");
+        String name = input.nextLine();
+        setAgenda();
+        setEmployeeAgenda(name,employee,hourly_employee,comissioned_employee,salaried_employee);
+    }
+
+    public void setEmployeeAgenda(String name,ArrayList<Employee> employee, ArrayList<Hourly_Employee> hourly_employee,
+                                  ArrayList<Comissioned_Employee> comissioned_employee,
+                                  ArrayList<Salaried_Employee> salaried_employee)
+    {
+        for (int i = 0; i < employee.size(); i++)
+        {
+            if (employee.get(i).getName().equals(name))
+            {
+                employee.get(i).setPaymentAgenda(paymentAgenda);
+                break;
+            }
+        }
+        for (int i = 0; i < hourly_employee.size(); i++)
+        {
+            if (hourly_employee.get(i).getName().equals(name))
+            {
+                hourly_employee.get(i).setPaymentAgenda(paymentAgenda);
+                break;
+            }
+        }
+        for (int i = 0; i <comissioned_employee.size(); i++)
+        {
+            if (comissioned_employee.get(i).getName().equals(name))
+            {
+                comissioned_employee.get(i).setPaymentAgenda(paymentAgenda);
+                break;
+            }
+        }
+        for (int i = 0; i < salaried_employee.size(); i++)
+        {
+            if (salaried_employee.get(i).getName().equals(name))
+            {
+                salaried_employee.get(i).setPaymentAgenda(paymentAgenda);
+                break;
+            }
+        }
+    }
 
     public void setAgenda()
     {

@@ -4,7 +4,7 @@ public class Database {
     Employee_Controller employee_controller = new Employee_Controller();
     Timecard_Controller timecard_controller = new Timecard_Controller();
     Sales_Result sales_result = new Sales_Result();
-    PaymentAgenda_Controller paymentAgenda = new PaymentAgenda_Controller();
+    PaymentAgenda_Controller paymentAgenda_controller = new PaymentAgenda_Controller();
     Service_Result service_result = new Service_Result();
     private ArrayList<Employee> employeeArrayList;
     private ArrayList<Hourly_Employee> hourly_employeeArrayList;
