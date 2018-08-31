@@ -6,14 +6,14 @@ import java.util.Calendar;
 public class PaymentAgenda_Controller {
     PaymentAgenda paymentAgenda = new PaymentAgenda(null,0,0);
 
-    public void employeeAgenda(ArrayList<Employee> employee, ArrayList<Hourly_Employee> hourly_employee,
+    public void employeeAgenda(Calendar cal,ArrayList<Employee> employee, ArrayList<Hourly_Employee> hourly_employee,
                                ArrayList<Comissioned_Employee> comissioned_employee,
                                ArrayList<Salaried_Employee> salaried_employee)
     {
         Scanner input = new Scanner(System.in);
         System.out.println("Nome do funcionário");
         String name = input.nextLine();
-        setAgenda();
+        setAgenda(cal);
         setEmployeeAgenda(name,employee,hourly_employee,comissioned_employee,salaried_employee);
     }
 
@@ -25,7 +25,8 @@ public class PaymentAgenda_Controller {
         {
             if (employee.get(i).getName().equals(name))
             {
-                employee.get(i).setPaymentAgenda(paymentAgenda);
+                employee.get(i).setPaymentAgenda(new PaymentAgenda(paymentAgenda.getType()
+                        ,paymentAgenda.getInterval(),paymentAgenda.getDateday()));
                 break;
             }
         }
@@ -33,7 +34,8 @@ public class PaymentAgenda_Controller {
         {
             if (hourly_employee.get(i).getName().equals(name))
             {
-                hourly_employee.get(i).setPaymentAgenda(paymentAgenda);
+                hourly_employee.get(i).setPaymentAgenda(new PaymentAgenda(paymentAgenda.getType()
+                        ,paymentAgenda.getInterval(),paymentAgenda.getDateday()));
                 break;
             }
         }
@@ -41,7 +43,8 @@ public class PaymentAgenda_Controller {
         {
             if (comissioned_employee.get(i).getName().equals(name))
             {
-                comissioned_employee.get(i).setPaymentAgenda(paymentAgenda);
+                comissioned_employee.get(i).setPaymentAgenda(new PaymentAgenda(paymentAgenda.getType()
+                        ,paymentAgenda.getInterval(),paymentAgenda.getDateday()));
                 break;
             }
         }
@@ -49,13 +52,14 @@ public class PaymentAgenda_Controller {
         {
             if (salaried_employee.get(i).getName().equals(name))
             {
-                salaried_employee.get(i).setPaymentAgenda(paymentAgenda);
+                salaried_employee.get(i).setPaymentAgenda(new PaymentAgenda(paymentAgenda.getType()
+                        ,paymentAgenda.getInterval(),paymentAgenda.getDateday()));
                 break;
             }
         }
     }
 
-    public void setAgenda()
+    public void setAgenda(Calendar cal)
     {
         Scanner input = new Scanner(System.in);
         System.out.println("Tipo: ");
@@ -64,17 +68,17 @@ public class PaymentAgenda_Controller {
         switch (choice)
         {
             case 1:
-                paymentAgenda.setType("Mensal");
+                paymentAgenda.setType("mensal");
                 setAgendaInterval();
                 break;
 
             case 2:
-                paymentAgenda.setType("Semanal");
+                paymentAgenda.setType("semanal");
                 setAgendaInterval();
                 setAgendaWeekDay();
                 break;
         }
-        setDuePaymentDate(paymentAgenda);
+        setDuePaymentDate(cal);
     }
 
     public void setAgendaInterval()
@@ -125,21 +129,20 @@ public class PaymentAgenda_Controller {
 
     public void displayAgendaType()
     {
-        System.out.println("1: Mensal");
-        System.out.println("2: Semanal");
+        System.out.println("1: mensal");
+        System.out.println("2: semanal");
     }
 
-    public void setDuePaymentDate(PaymentAgenda paymentAgenda)
+    public void setDuePaymentDate(Calendar cal)
     {
-        Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        if (paymentAgenda.getType().equals("Mensal"))
+        cal.getTime();
+        if (paymentAgenda.getType().equals("mensal"))
         {
             cal.add(Calendar.MONTH,1);
             paymentAgenda.setDuedatemonth(cal.get(Calendar.MONTH));
             paymentAgenda.setDuedateday(cal.get(Calendar.DAY_OF_MONTH));
         }
-        else if (paymentAgenda.getType().equals("Semanal"))
+        else if (paymentAgenda.getType().equals("semanal"))
         {
             cal.add(Calendar.WEEK_OF_MONTH,paymentAgenda.getInterval());
             paymentAgenda.setDuedatemonth(cal.get(Calendar.MONTH));

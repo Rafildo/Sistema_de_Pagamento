@@ -12,8 +12,8 @@ public class Employee {
     public Employee(Syndicate syndicate,PaymentAgenda paymentAgenda,String name, String address,
                     String type, String paymentMethod, double salary, int employeeid, double salarydeductions)
     {
-        this.syndicate = new Syndicate(0,0);
-        this.paymentAgenda = new PaymentAgenda(null,0,0);
+        this.syndicate = syndicate;
+        this.paymentAgenda = paymentAgenda;
         this.name = name;
         this.type = type;
         this.address = address;

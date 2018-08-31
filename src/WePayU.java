@@ -1,3 +1,5 @@
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -7,17 +9,15 @@ public class WePayU {
     private int month;
     private int weekday;
 
-    public void payMenu(Database database)
+    public void payMenu(Calendar calendar,Database database)
     {
-        Calendar cal = Calendar.getInstance();
-        cal.getTime();
         Scanner input = new Scanner(System.in);
         displayPayMenu();
         int choice = input.nextInt();
         switch (choice)
         {
             case 1:
-                payCheck(cal,
+                payCheck(calendar,
                         database.getEmployeeArrayList(),
                         database.getHourly_employeeArrayList(),
                         database.getComissioned_employeeArrayList(),
@@ -26,7 +26,8 @@ public class WePayU {
                 break;
 
             case 2:
-                payRoll(cal);
+                calendar.add(Calendar.DAY_OF_MONTH,1);
+                System.out.println(calendar.getTime());
                 break;
         }
     }
@@ -36,51 +37,101 @@ public class WePayU {
         System.out.println("1: Pagamentos do dia");
         System.out.println("2: Avançar um dia");
     }
-    public void payRoll(Calendar calendar)
-    {
-        calendar.add(Calendar.DAY_OF_MONTH,1);
-    }
     public void payCheck(Calendar calendar,ArrayList<Employee> employee,
                          ArrayList<Hourly_Employee> hourly_employee,
                          ArrayList<Comissioned_Employee> comissioned_employees,
                          ArrayList<Salaried_Employee> salaried_employee)
     {
-       calendar = Calendar.getInstance();
         day = calendar.get(Calendar.DAY_OF_MONTH);
         month = calendar.get(Calendar.MONTH);
         weekday = calendar.get(Calendar.DAY_OF_WEEK);
 
         for (int i = 0; i < hourly_employee.size() ; i++)
         {
-            if (hourly_employee.get(i).paymentAgenda.getType().equals("Mensal"))
+            if (hourly_employee.get(i).paymentAgenda.getType().equals("mensal"))
             {
                 if (hourly_employee.get(i).paymentAgenda.getDuedatemonth() == month)
                 {
                     if (hourly_employee.get(i).paymentAgenda.getDuedateday() == day)
                     {
-                        System.out.println("Pagamento efetuado!");
                         System.out.println(hourly_employee.get(i).getAccumulatedsalary());
                         hourly_employee.get(i).setAccumulatedsalary(hourly_employee.get(i).getAccumulatedsalary()*-1);
                     }
                 }
             }
-            else if (hourly_employee.get(i).paymentAgenda.getType().equals("Semanal"))
+            else if (hourly_employee.get(i).paymentAgenda.getType().equals("semanal"))
             {
-                if (hourly_employee.get(i).paymentAgenda.getDuedatemonth() == month)
-                {
+                System.out.println(hourly_employee.get(i).paymentAgenda.getDuedateday());
+                System.out.println(hourly_employee.get(i).paymentAgenda.getDuedatemonth());
+                System.out.println(hourly_employee.get(i).paymentAgenda.getDueweekday());
                     if (hourly_employee.get(i).paymentAgenda.getDuedateday() == day)
                     {
-                        if (hourly_employee.get(i).paymentAgenda.getWeekday() == weekday)
+                        if (hourly_employee.get(i).paymentAgenda.getDueweekday() == weekday)
                         {
                             System.out.println("Pagamento efetuado!");
-                            System.out.println(hourly_employee.get(i).getAccumulatedsalary());
                             hourly_employee.get(i).setAccumulatedsalary(hourly_employee.get(i).getAccumulatedsalary()*-1);
                         }
+                    }
+            }
+        }
+
+        for (int i = 0; i <comissioned_employees.size() ; i++)
+        {
+            if (comissioned_employees.get(i).paymentAgenda.getType().equals("mensal"))
+            {
+                if (comissioned_employees.get(i).paymentAgenda.getDuedatemonth() == month)
+                {
+                    if (comissioned_employees.get(i).paymentAgenda.getDuedateday() == day)
+                    {
+                        System.out.println(comissioned_employees.get(i).getAccumulatedsalary());
+                        comissioned_employees.get(i).setAccumulatedsalary(hourly_employee.get(i).getAccumulatedsalary()*-1);
+                    }
+                }
+            }
+            else if (comissioned_employees.get(i).paymentAgenda.getType().equals("semanal"))
+            {
+                System.out.println(comissioned_employees.get(i).paymentAgenda.getDuedateday());
+                System.out.println(comissioned_employees.get(i).paymentAgenda.getDuedatemonth());
+                System.out.println(comissioned_employees.get(i).paymentAgenda.getDueweekday());
+                if (comissioned_employees.get(i).paymentAgenda.getDuedateday() == day)
+                {
+                    if (comissioned_employees.get(i).paymentAgenda.getDueweekday() == weekday)
+                    {
+                        System.out.println("Pagamento efetuado!");
+                        comissioned_employees.get(i).setAccumulatedsalary(comissioned_employees.get(i).getAccumulatedsalary()*-1);
                     }
                 }
             }
         }
 
+        for (int i = 0; i < salaried_employee.size() ; i++)
+        {
+            if (salaried_employee.get(i).paymentAgenda.getType().equals("mensal"))
+            {
+                if (salaried_employee.get(i).paymentAgenda.getDuedatemonth() == month)
+                {
+                    if (salaried_employee.get(i).paymentAgenda.getDuedateday() == day)
+                    {
+                        System.out.println(salaried_employee.get(i).getSalary());
+                        salaried_employee.get(i).setSalary(salaried_employee.get(i).getSalary()*-1);
+                    }
+                }
+            }
+            else if (salaried_employee.get(i).paymentAgenda.getType().equals("semanal"))
+            {
+                System.out.println(salaried_employee.get(i).paymentAgenda.getDuedateday());
+                System.out.println(salaried_employee.get(i).paymentAgenda.getDuedatemonth());
+                System.out.println(salaried_employee.get(i).paymentAgenda.getDueweekday());
+                if (salaried_employee.get(i).paymentAgenda.getDuedateday() == day)
+                {
+                    if (salaried_employee.get(i).paymentAgenda.getDueweekday() == weekday)
+                    {
+                        System.out.println("Pagamento efetuado!");
+                        salaried_employee.get(i).setSalary(salaried_employee.get(i).getSalary()*-1);
+                    }
+                }
+            }
+        }
     }
 
 }

@@ -8,8 +8,4 @@ public class Salaried_Employee extends Employee {
         super(syndicate,paymentAgenda,name,address,type,paymentMethod,salary,employeeid,salarydeductions);
     }
 
-    double calculateSalary(double salary)
-    {
-        return salary;
-    }
 }
