@@ -214,12 +214,12 @@ public class Employee_Controller {
                 employeeset.setSalary(input.nextDouble());
                 input.nextLine();
                 database.getEmployeeArrayList().add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("semanal",1,"sexta"),
+                        new PaymentAgenda("semanal",1,6),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0 ,
                         employeeset.getEmployeeid(),0));
                 database.getHourly_employeeArrayList().add(new Hourly_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("semanal",1,"sexta"),
+                        new PaymentAgenda("semanal",1,6),
                         employeeset.getName(),employeeset.getAddress(),"Horista",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,0,
                         employeeset.getEmployeeid(),0));
@@ -230,11 +230,11 @@ public class Employee_Controller {
                 employeeset.setSalary(input.nextDouble());
                 input.nextLine();
                 employee.add(new Salaried_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("mensal",30,null),
+                        new PaymentAgenda("mensal",30,0),
                         employeeset.getName(),employeeset.getAddress(),"Assalariado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid(),0));
                 salaried_employee.add(new Salaried_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("mensal",30,null),
+                        new PaymentAgenda("mensal",30,0),
                         employeeset.getName(),employeeset.getAddress(),"Assalariado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(), employeeset.getEmployeeid(),0));
                 break;
@@ -247,12 +247,12 @@ public class Employee_Controller {
                 System.out.println("Comissão");
                 comissionedemployeeset.setComission(input.nextDouble());
                 employee.add(new Comissioned_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("semanal",2,"sexta"),
+                        new PaymentAgenda("semanal",2,6),
                         employeeset.getName(),employeeset.getAddress(), "Comissionado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,
                         employeeset.getEmployeeid(),comissionedemployeeset.getComission(),0));
                 comissioned_employee.add(new Comissioned_Employee(new Syndicate(syndicate.getSyndicateid(),syndicate.getSyndicatetax()),
-                        new PaymentAgenda("semanal",2,"sexta"),
+                        new PaymentAgenda("semanal",2,6),
                         employeeset.getName(),employeeset.getAddress(), "Comissionado",
                         employeeset.getPaymentMethod(),employeeset.getSalary(),0,
                         employeeset.getEmployeeid(),comissionedemployeeset.getComission(),0));

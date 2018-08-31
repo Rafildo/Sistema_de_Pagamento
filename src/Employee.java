@@ -13,7 +13,7 @@ public class Employee {
                     String type, String paymentMethod, double salary, int employeeid, double salarydeductions)
     {
         this.syndicate = new Syndicate(0,0);
-        this.paymentAgenda = new PaymentAgenda(null,0,null);
+        this.paymentAgenda = new PaymentAgenda(null,0,0);
         this.name = name;
         this.type = type;
         this.address = address;

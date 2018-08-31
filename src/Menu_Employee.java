@@ -77,7 +77,7 @@ public class Menu_Employee
 
     public void printEmployee(Database database)
     {
-        System.out.println(database.getEmployeeArrayList());
+        System.out.println(database.getHourly_employeeArrayList());
     }
 
 

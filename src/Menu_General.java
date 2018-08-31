@@ -1,32 +1,37 @@
+import java.util.Scanner;
 
 public class Menu_General {
 
     Menu_Employee menu_employee = new Menu_Employee();
+    Menu_Submissions menu_submissions = new Menu_Submissions();
+    WePayU menu_pagamento = new WePayU();
     public void Menu_Select(Database database)
     {
-      menu_employee.employeeFunctions(database);
+        displayMenuSelection();
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();
+        switch (choice)
+        {
+          case 1:
+              menu_employee.employeeFunctions(database);
+              break;
+
+          case 2:
+              menu_submissions.Submissions(database);
+              break;
+
+          case 3:
+              menu_pagamento.payMenu(database);
+              break;
+        }
     }
 
-    public void newHourlyEmployeeTimecard(Database database)
+    public void displayMenuSelection()
     {
-        database.timecard_controller.hourlyEmployeecontribution(database.getHourly_employeeArrayList());
+        System.out.println("1: Menu de funcionários");
+        System.out.println("2: Menu de lançamentos");
+        System.out.println("3: Menu de pagamentos");
     }
 
-    public void newSaleResult(Database database)
-    {
-        database.sales_result.submitSalesResult(database.getComissioned_employeeArrayList());
-    }
 
-    public void newServiceResult(Database database)
-    {
-        database.service_result.submitService(database.getEmployeeArrayList(),
-                database.getHourly_employeeArrayList(),
-                database.getComissioned_employeeArrayList(),
-                database.getSalaried_employeeArrayList());
-    }
-
-    public void printEmployee(Database database)
-    {
-        System.out.println(database.getComissioned_employeeArrayList());
-    }
 }

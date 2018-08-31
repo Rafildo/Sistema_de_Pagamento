@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Calendar;
 
 public class PaymentAgenda_Controller {
-    PaymentAgenda paymentAgenda = new PaymentAgenda(null,0,null);
+    PaymentAgenda paymentAgenda = new PaymentAgenda(null,0,0);
 
     public void employeeAgenda(ArrayList<Employee> employee, ArrayList<Hourly_Employee> hourly_employee,
                                ArrayList<Comissioned_Employee> comissioned_employee,
@@ -92,23 +92,23 @@ public class PaymentAgenda_Controller {
         switch (choice)
         {
             case 2:
-                paymentAgenda.setWeekday("segunda");
+                paymentAgenda.setWeekday(2);
                 break;
 
             case 3:
-                paymentAgenda.setWeekday("terça");
+                paymentAgenda.setWeekday(3);
                 break;
 
             case 4:
-                paymentAgenda.setWeekday("quarta");
+                paymentAgenda.setWeekday(4);
                 break;
 
             case 5:
-                paymentAgenda.setWeekday("quinta");
+                paymentAgenda.setWeekday(5);
                 break;
 
             case 6:
-                paymentAgenda.setWeekday("sexta");
+                paymentAgenda.setWeekday(6);
                 break;
         }
 
@@ -146,21 +146,21 @@ public class PaymentAgenda_Controller {
             paymentAgenda.setDuedateday(cal.get(Calendar.DAY_OF_MONTH));
             switch (paymentAgenda.getWeekday())
             {
-                case "segunda":
+                case 2:
                     paymentAgenda.setDueweekday(2);
                     break;
-                case "terça" :
+                case 3 :
                     paymentAgenda.setDueweekday(3);
                     break;
-                case "quarta":
+                case 4:
                     paymentAgenda.setDueweekday(4);
                     break;
 
-                case "quinta":
+                case 5:
                     paymentAgenda.setDueweekday(5);
                     break;
 
-                case "sexta":
+                case 6:
                     paymentAgenda.setDueweekday(6);
                     break;
             }

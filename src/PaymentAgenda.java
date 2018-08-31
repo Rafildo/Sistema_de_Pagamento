@@ -5,14 +5,14 @@ public class PaymentAgenda {
     Calendar cal = Calendar.getInstance();
     private String type;
     private int interval;
-    private String weekday;
+    private int weekday;
     private int dateday;
     private int datemonth;
     private int dueweekday;
     private int duedateday;
     private  int duedatemonth;
 
-    public PaymentAgenda(String type,int interval,String day)
+    public PaymentAgenda(String type,int interval,int day)
     {
         this.type = type;
         this.interval = interval;
@@ -54,11 +54,11 @@ public class PaymentAgenda {
     }
 
 
-    public void setWeekday(String weekday) {
+    public void setWeekday(int weekday) {
         this.weekday = weekday;
     }
 
-    public String getWeekday() {
+    public int getWeekday() {
         return weekday;
     }
 

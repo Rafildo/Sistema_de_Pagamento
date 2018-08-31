@@ -24,6 +24,7 @@ public class Timecard_Controller {
             System.out.println("Horas trabalhadas");
             temp.setWorkedhours(input.nextInt());
             temp.setAccumulatedsalary(calculateSalary(temp.getWorkedhours(),temp));
+           // System.out.println(temp.getAccumulatedsalary());
 
         }
     }
